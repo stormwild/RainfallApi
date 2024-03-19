@@ -40,7 +40,7 @@ public static class RainfallExtensions
     {
         return new RainfallReading
         {
-            DateMeasured = DateTime.Parse(item.DateTime),
+            DateMeasured = DateTimeOffset.Parse(item.DateTime),
             AmountMeasured = Convert.ToDecimal(item.Value)
         };
     }

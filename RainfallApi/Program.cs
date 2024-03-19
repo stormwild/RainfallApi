@@ -13,6 +13,8 @@ builder.Services.AddHttpClient<IRainfallApiClient, RainfallApiClient>(client => 
 
 var info = builder.Configuration.GetOpenApiInfo();
 
+ArgumentNullException.ThrowIfNull(info);
+
 builder.Services.AddAuthorization();
 builder.Services.AddFastEndpoints()
                 .SwaggerDocument(o =>

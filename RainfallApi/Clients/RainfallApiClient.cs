@@ -19,7 +19,7 @@ public class RainfallApiClient : IRainfallApiClient
 
     public async Task<ReadingResponse> GetStationReadingsAsync(string stationId, int limit, CancellationToken ct)
     {
-        var response = await _httpClient.GetAsync($"id/stations/{stationId}/readings?_sorted&_limit={limit}");
+        var response = await _httpClient.GetAsync($"id/stations/{stationId}/readings?_sorted&_limit={limit}", ct);
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync(ct);
         return JsonSerializer.Deserialize<ReadingResponse>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new ReadingResponse();
