@@ -1,7 +1,6 @@
 ﻿using FastEndpoints;
-using RainfallApi.Clients;
+using Rainfall.Core.Clients;
 using RainfallApi.Endpoints.Rainfall;
-using System.Reflection.Metadata;
 
 namespace RainfallApi;
 
@@ -20,7 +19,7 @@ public class RainfallEndpoint : Endpoint<RainfallReadingsRequest, RainfallReadin
     {
         Get("/rainfall/id/{StationId}/readings");
         Tags("Rainfall"); // Tagging as per OpenAPI spec
-        AllowAnonymous();
+        Description(b => b.WithDescription("Operations relating to rainfall"));
     }
 
     public override async Task HandleAsync(RainfallReadingsRequest req, CancellationToken ct)
@@ -40,7 +39,7 @@ public static class RainfallExtensions
     {
         return new RainfallReading
         {
-            DateMeasured = DateTime.Parse(item.DateTime),
+            DateMeasured = DateTimeOffset.Parse(item.DateTime),
             AmountMeasured = Convert.ToDecimal(item.Value)
         };
     }

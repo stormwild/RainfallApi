@@ -1,4 +1,4 @@
-﻿namespace RainfallApi.Clients;
+﻿namespace Rainfall.Core.Clients;
 
 public class ReadingResponse
 {

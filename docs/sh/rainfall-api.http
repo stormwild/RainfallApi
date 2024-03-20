@@ -1,0 +1,4 @@
+@RainFallApi_HostAddress = https://environment.data.gov.uk
+
+GET {{RainFallApi_HostAddress}}/flood-monitoring/id/stations?parameter=rainfall&_view=full
+Accept: application/json
