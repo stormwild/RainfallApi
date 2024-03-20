@@ -57,4 +57,56 @@ public class ExampleEndpoint : EndpointWithoutRequest
 
 }
 
+using System;
+
+namespace MyCRMAPI.Core.Services;
+
+public sealed class ResultOrError<TResult, TError>
+{
+    public bool IsError { get; }
+    public TResult Result { get; }
+    public TError Error { get; }
+
+    public ResultOrError(TResult result) => Result = result;
+
+    public ResultOrError(TError error)
+    {
+        Error = error;
+        IsError = true;
+    }
+
+    public static implicit operator ResultOrError<TResult, TError>(TResult result) => new ResultOrError<TResult, TError>(result);
+    public static implicit operator ResultOrError<TResult, TError>(TError error) => new ResultOrError<TResult, TError>(error);
+
+    public TOutcome Match<TOutcome>(Func<TResult, TOutcome> success, Func<TError, TOutcome> failure) => IsError ? failure(Error) : success(Result);
+}
+
+namespace RainfallApi;
+
+public sealed class Result<TResult, TError>
+{
+    public bool IsError { get; }
+    public TResult Success { get; }
+    public TError Error { get; }
+
+    public Result(TResult result)
+    {
+        Success = result;
+        IsError = false;
+        Error = default;
+    }
+
+    public Result(TError error)
+    {
+        Success = default;
+        Error = error;
+        IsError = true;
+    }
+
+    public static implicit operator Result<TResult, TError>(TResult result) => new Result<TResult, TError>(result);
+    public static implicit operator Result<TResult, TError>(TError error) => new Result<TResult, TError>(error);
+
+    public TOutcome Match<TOutcome>(Func<TResult, TOutcome> success, Func<TError, TOutcome> failure) => IsError ? failure(Error) : success(Success);
+}
+
 ```

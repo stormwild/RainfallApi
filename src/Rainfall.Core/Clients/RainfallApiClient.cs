@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace RainfallApi.Clients;
+namespace Rainfall.Core.Clients;
 
 
 public interface IRainfallApiClient

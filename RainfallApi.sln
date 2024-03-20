@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RainfallApi", "RainfallApi\RainfallApi.csproj", "{E24AE8DC-F856-48BA-8F07-F29AD08D048E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20ABB5D6-9EA7-472A-A631-CF26AAC4C28E}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -15,7 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		snippets.md = snippets.md
 		rainfall.yml = rainfall.yml
+		docs\sh\RainfallApi.http = docs\sh\RainfallApi.http
+		docs\sh\rainfall-api.http = docs\sh\rainfall-api.http
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{70359091-0044-4BFA-91F4-012E02A43A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RainfallApi", "src\RainfallApi\RainfallApi.csproj", "{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainfall.Core", "src\Rainfall.Core\Rainfall.Core.csproj", "{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,13 +29,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E24AE8DC-F856-48BA-8F07-F29AD08D048E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E24AE8DC-F856-48BA-8F07-F29AD08D048E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E24AE8DC-F856-48BA-8F07-F29AD08D048E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E24AE8DC-F856-48BA-8F07-F29AD08D048E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61AA19F2-1300-4EA9-ABEA-15F1A97BDEEA} = {70359091-0044-4BFA-91F4-012E02A43A19}
+		{B7F976FE-F1DB-4B2F-90A1-6F7DA6F8A575} = {70359091-0044-4BFA-91F4-012E02A43A19}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6C0B6A3-AC0C-481D-A156-037942BBA4EC}

@@ -1,0 +1,12 @@
+@RainfallApi_HostAddress = http://localhost:5278
+@Id = 123
+@Count = 200
+
+GET {{RainfallApi_HostAddress}}/rainfall/id/{{Id}}/readings?count={{Count}}
+Accept: application/json
+
+###
+
+GET {{RainfallApi_HostAddress}}/rainfall/id/{{Id}}/readings
+Accept: application/json
+
