@@ -1,8 +1,7 @@
 ﻿using FastEndpoints;
 using FluentValidation;
-using RainfallApi.Endpoints.Rainfall;
 
-namespace RainfallApi;
+namespace Rainfall.Api.Endpoints.Rainfall;
 
 public class RainfallReadingsRequestValidator : Validator<RainfallReadingsRequest>
 {

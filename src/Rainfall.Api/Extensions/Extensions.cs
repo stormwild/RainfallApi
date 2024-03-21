@@ -2,7 +2,7 @@
 using LanguageExt;
 using NSwag;
 
-namespace RainfallApi.Extensions;
+namespace Rainfall.Api.Extensions;
 
 public static class OpenApi
 {

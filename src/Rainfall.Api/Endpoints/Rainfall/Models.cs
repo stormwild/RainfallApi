@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RainfallApi.Endpoints.Rainfall;
+namespace Rainfall.Api.Endpoints.Rainfall;
 
 // Define the request and response DTOs according to the OpenAPI spec
 public class RainfallReadingsRequest
