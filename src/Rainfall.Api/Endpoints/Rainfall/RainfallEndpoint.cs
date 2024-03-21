@@ -1,12 +1,12 @@
 ﻿using FastEndpoints;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Rainfall.Core.Clients;
-using RainfallApi.Endpoints.Rainfall;
 
-namespace RainfallApi;
-
+namespace Rainfall.Api.Endpoints.Rainfall;
 
 
-public class RainfallEndpoint : Endpoint<RainfallReadingsRequest, RainfallReadingsResponse>
+
+public class RainfallEndpoint : Endpoint<RainfallReadingsRequest, Results<Ok<RainfallReadingsResponse>, BadRequest, NotFound>>
 {
     private readonly IRainfallApiClient _client;
 
@@ -19,16 +19,26 @@ public class RainfallEndpoint : Endpoint<RainfallReadingsRequest, RainfallReadin
     {
         Get("/rainfall/id/{StationId}/readings");
         Tags("Rainfall"); // Tagging as per OpenAPI spec
-        Description(b => b.WithDescription("Operations relating to rainfall"));
+        Description(b => b
+            .ProducesProblemFE<ProblemDetails>(400)
+            .ProducesProblemFE<ProblemDetails>(404)
+            .ProducesProblemFE<ProblemDetails>(500)
+        );
+        Summary(s =>
+        {
+            s.Summary = "Operations relating to rainfall";
+            s.Description = "Get the rainfall readings for a given station";
+        });
+
     }
 
-    public override async Task HandleAsync(RainfallReadingsRequest req, CancellationToken ct)
+    public override async Task<Results<Ok<RainfallReadingsResponse>, BadRequest, NotFound>> ExecuteAsync(RainfallReadingsRequest req, CancellationToken ct)
     {
         var response = await _client.GetStationReadingsAsync(req.StationId, req.Count ?? RainfallExtensions.DefaultCount, ct);
-        await SendAsync(new RainfallReadingsResponse
+        return TypedResults.Ok(new RainfallReadingsResponse
         {
             Readings = response.Items.Select(item => item.ToRainfallReading()).ToList()
-        }, cancellation: ct);
+        });
     }
 }
 
