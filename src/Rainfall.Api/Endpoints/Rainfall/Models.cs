@@ -19,5 +19,5 @@ public class RainfallReading
 
 public class RainfallReadingsResponse
 {
-    public List<RainfallReading> Readings { get; set; } = new();
+    public List<RainfallReading> Readings { get; set; } = [];
 }
