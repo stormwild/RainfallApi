@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 		nuget.config = nuget.config
 		README.md = README.md
-		snippets.md = snippets.md
 		rainfall.yml = rainfall.yml
 		docs\sh\RainfallApi.http = docs\sh\RainfallApi.http
 		docs\sh\rainfall-api.http = docs\sh\rainfall-api.http
@@ -30,6 +29,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{FD271ABB-38C7-47D9-9034-1E5B758DFF0A}"
 	ProjectSection(SolutionItems) = preProject
 		docs\docs.md = docs\docs.md
+		docs\snippets.md = docs\snippets.md
 	EndProjectSection
 EndProject
 Global
